@@ -68,7 +68,7 @@ function displayMessage(mess,ques){
     let li = document.createElement('li');
     li.innerText = ques;
     list.appendChild(li);
-    realResult.textContent = mess;
+    realResult.innerHTML = mess;
     console.log(realResult);
     inputVal.value=""
     
