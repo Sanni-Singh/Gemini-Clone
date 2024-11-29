@@ -5,7 +5,7 @@
 }
 body{
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #1E1F20;
     display: flex;
 
@@ -26,6 +26,9 @@ body{
             align-items: center;
             gap: 4rem;
             padding: 20px;
+            img{
+                cursor: pointer;
+            }
 
             .plus{
                 background-color: #202123;
@@ -34,6 +37,7 @@ body{
                 justify-content: center;align-items: center;
                 border-radius: 50%;
                 img{
+                    cursor: pointer;
                     width: 30px;
                     color: #282A2C;
                 }
@@ -58,6 +62,7 @@ body{
                     flex-direction: column;
                     gap: 10px;
                     display: none;
+                    cursor: pointer;
                     li{
                         list-style: none;
                         color: #fff;
@@ -80,6 +85,7 @@ body{
                 gap: 10px;
                 color: #fff;
                 overflow: hidden;
+                cursor: pointer;
                 p{
                     display: none;
                 }
@@ -108,6 +114,7 @@ body{
                 justify-content: center;
                 align-items: center;
                 font-size: 1.5rem;
+                cursor: pointer;
                 
                 img{
                     width: 30px;
@@ -130,12 +137,17 @@ body{
                     height: fit-content;
                     background-color: #4C4E51;
                     color: #fff;
+                    cursor: pointer;
 
 
+                }
+                img{
+                    cursor: pointer;
                 }
                 .dp{
                     width: 30px;
                     border-radius: 50%;
+                    cursor: pointer;
                 }
             }
         }
@@ -145,12 +157,15 @@ body{
             position: relative;
             display: flex;
             /* justify-content: center;align-items: center; */
+            /* flex-direction: column; */
             gap: 10px;
             top: 100px;
             margin: 0 auto;
             background-color: #1E1F20;
             text-align: center;
             color: #fff;
+
+            
             h2{
                 text-align: center;
                 padding: 200px 200px;
@@ -190,6 +205,21 @@ body{
                         position: relative;
                         animation: rotateImage 1s linear infinite;
                     }
+                    .hr{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        display: none;
+                        gap: 10px;
+        
+                        hr{
+                            height: 5px;
+                            border-radius: 10px;
+                            background-color: #4158D0;
+                            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+                            transition-duration: 3s;
+                        }
+                    }
                    
                 }
             }
@@ -201,6 +231,7 @@ body{
         .searchBtn{
             width: 100%;
             height: 100px;
+            cursor: pointer;
             
             background-color: #1E1F20;
             position: fixed;
@@ -246,5 +277,49 @@ body{
     }
     100% {
       transform: rotate(360deg);
+    }
+}
+
+.hori{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    display: none;
+
+    hr{
+        height: 5px;
+        border: none;
+        border-radius: 10px;
+        
+
+        animation: ghumo 1s linear  infinite ;
+
+    }
+}
+@keyframes ghumo {
+    0%{
+        background-color: #0093E9;
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+    }
+    25%{
+        background-color: #00DBDE;
+        background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+
+    }
+    50%{
+        background-color: #FFE53B;
+        background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+
+    }
+    75%{
+        background-color: #FAD961;
+        background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+
+    }
+    100%{
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     }
 }

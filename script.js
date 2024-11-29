@@ -57,27 +57,24 @@ menuBtn.addEventListener('click',()=>{
 
 })
 
+
 const API_KEY = "AIzaSyCcXIoehlfCn6RrhB2BgcGMPRwS7IkmxU8";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 function displayMessage(mess,ques){
-    section.innerHTML = ""
+    let hori1 = document.querySelector('.hori');
+    hori1.style.display="none";
+    let realResult = document.querySelector('#real')
     let li = document.createElement('li');
     li.innerText = ques;
     list.appendChild(li);
-    let item=`
-        <img class="carry" src="./img/download.jpeg" alt="">
-            <div class="containt">
-                <h4>${ques}</h4>
-                <div class="content-Text">
-                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="">
-                    <p>${mess}</p>
-                </div>
-            </div>
-    `
-    h2.style.display="none"
-    section.innerHTML = item;
-    inputVal.value = "";
+    realResult.textContent = mess;
+    console.log(realResult);
+    inputVal.value=""
+    
+    
+    // inputVal.value = "";
+    
 }
 
 const fetchAPIResponse = async (attempt = 1) => {
@@ -107,17 +104,38 @@ const fetchAPIResponse = async (attempt = 1) => {
     };
 }
 
-
+function setItems(){
+    let item=`
+        <img class="carry" src="./img/download.jpeg" alt="">
+            <div class="containt">
+                <h4>${inputVal.value}</h4>
+                <div class="content-Text">
+                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="">
+                    <p id="real" >
+                        <div class="hori">
+                            <hr><hr><hr><hr>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            `
+    section.innerHTML = item;
+    let hori = document.querySelector('.hori');
+    hori.style.display="flex";
+}
 
 
 const generateAPIresponse = async (incomingMessageDiv) => {
     if(inputVal.value === ""|| inputVal.value === undefined){
         return;
     }
+    
+    setItems();
+
     try {
         const data = await fetchAPIResponse();
 
-        console.log('API Response:', data); 
+        // console.log('API Response:', data); 
 
        
         if (data?.candidates && data.candidates.length > 0 && data.candidates[0]?.content?.parts?.[0]?.text) {
@@ -130,7 +148,9 @@ const generateAPIresponse = async (incomingMessageDiv) => {
                 .replace(/\*\*/g, '')          // Remove bold markdown (optional)
                 .replace(/\_/g, '')            // Remove underscore markdown (optional)
                 .replace(/\n/g, '<br>');       // Replace line breaks with <br> (optional)
-            
+                console.log(cleanedResponse);
+                console.log(inputVal.value);
+                
                 displayMessage(cleanedResponse , inputVal.value)
             
         } else {
